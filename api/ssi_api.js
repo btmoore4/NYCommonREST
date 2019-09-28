@@ -4,7 +4,7 @@ const URL_SUFFIX = ".staging-cloud-agents.us-east.containers.appdomain.cloud"
 
 async function getAgentCredentials(res, user, password, key) {
     if (typeof user === 'undefined' || typeof password === 'undefined' || typeof key === 'undefined') {
-        res.send("Undefined Username or Password for Agent Credentials")
+        res.send("Undefined Username, Key, or Password for Agent Credentials")
     }
 
     const url =  URL_PREFIX.concat(user, ":@", key, URL_SUFFIX)
@@ -24,30 +24,10 @@ async function getAgentCredentials(res, user, password, key) {
 
 async function getAgentVerifications(res, user, password, key) {
     if (typeof user === 'undefined' || typeof password === 'undefined' || typeof key === 'undefined') {
-        res.send("Undefined Username or Password for Agent Credentials")
+        res.send("Undefined Username, Key, or Password for Agent Verifications")
     }
 
     const url =  URL_PREFIX.concat(user, ":@", key, URL_SUFFIX)
-    const agent = new Agent(url, user, password)
-    const verifications = await agent.getVerifications()
-
-    res.json(
-        verifications.map(ver => {
-            var data = {}
-            data['name'] = ver['proof_request']['name']
-            data['id'] = ver['proof_request']['id']
-            data['version'] = ver['proof_request']['version']
-            data['attributes'] = ver['proof_request']['requested_attributes']
-            return data
-        })
-    )
-}
-
-async function getAgentVerifications(res, url, user, password) {
-    if (typeof user === 'undefined' || typeof password === 'undefined') {
-        res.send("Undefined Username or Password for Agent Credentials")
-    }
-
     const agent = new Agent(url, user, password)
     const verifications = await agent.getVerifications()
 

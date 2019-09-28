@@ -14,7 +14,7 @@ app.get("/", (req, res, next) => {
 });
 
 /* SSI Routes */
-var SSI = require('./ssi_api.js')
+var SSI = require('./api/ssi_api.js')
 
 app.get("/agentCredentials", (req, res, next) => {
     const agent_user = req.query.user
@@ -31,7 +31,7 @@ app.get("/agentVerifications", (req, res, next) => {
 });
 
 /* MOCK Routes */
-var Mock = require('./mock_api.js')
+var Mock = require('./api/mock_api.js')
 
 app.get("/mockCredentials", (req, res, next) => {
     Mock.getMockCredentials(res)

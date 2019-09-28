@@ -16,27 +16,27 @@ app.get("/", (req, res, next) => {
 /* SSI Routes */
 var SSI = require('./api/ssi_api.js')
 
-app.get("/agentCredentials", (req, res, next) => {
+app.get("/userCredentials", (req, res, next) => {
     const agent_user = req.query.user
     const agent_password = req.query.password
     const agent_key = req.query.key
-    SSI.getAgentCredentials(res, agent_user, agent_password, agent_key)
+    SSI.getUserCredentials(res, agent_user, agent_password, agent_key)
 });
 
-app.get("/agentVerifications", (req, res, next) => {
+app.get("/userVerifications", (req, res, next) => {
     const agent_user = req.query.user
     const agent_password = req.query.password
     const agent_key = req.query.key
-    SSI.getAgentVerifications(res, agent_user, agent_password, agent_key)
+    SSI.getUserVerifications(res, agent_user, agent_password, agent_key)
 });
 
 /* MOCK Routes */
 var Mock = require('./api/mock_api.js')
 
-app.get("/mockCredentials", (req, res, next) => {
-    Mock.getMockCredentials(res)
+app.get("/mockUserCredentials", (req, res, next) => {
+    Mock.getMockUserCredentials(res)
 });
 
-app.get("/mockVerifications", (req, res, next) => {
-    Mock.getMockVerifications(res)
+app.get("/mockUserVerifications", (req, res, next) => {
+    Mock.getMockUserVerifications(res)
 });

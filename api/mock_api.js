@@ -1,4 +1,4 @@
-function getMockCredentials(res) {
+function getMockUserCredentials(res) {
     var mock_credentials = [
         {
             "schema_name": "New York Driver's Liscence",
@@ -26,7 +26,7 @@ function getMockCredentials(res) {
     res.json(mock_credentials);
 }
 
-function getMockVerifications(res) {
+function getMockUserVerifications(res) {
     var mock_verifications = [
         {
             "name": "Verify Age",
@@ -71,4 +71,4 @@ function getMockVerifications(res) {
       ]
     res.json(mock_verifications);
 }
-module.exports = Object.assign({ getMockCredentials, getMockVerifications })
+module.exports = Object.assign({ getMockUserCredentials, getMockUserVerifications })

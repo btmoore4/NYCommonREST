@@ -2,7 +2,7 @@ const Agent = require('openssi-websdk').Agent;
 const URL_PREFIX = "https://"
 const URL_SUFFIX = ".staging-cloud-agents.us-east.containers.appdomain.cloud"
 
-async function getAgentCredentials(res, user, password, key) {
+async function getUserCredentials(res, user, password, key) {
     if (typeof user === 'undefined' || typeof password === 'undefined' || typeof key === 'undefined') {
         res.send("Undefined Username, Key, or Password for Agent Credentials")
     }
@@ -22,7 +22,7 @@ async function getAgentCredentials(res, user, password, key) {
     )
 }
 
-async function getAgentVerifications(res, user, password, key) {
+async function getUserVerifications(res, user, password, key) {
     if (typeof user === 'undefined' || typeof password === 'undefined' || typeof key === 'undefined') {
         res.send("Undefined Username, Key, or Password for Agent Verifications")
     }
@@ -43,4 +43,4 @@ async function getAgentVerifications(res, user, password, key) {
     )
 }
 
-module.exports = Object.assign({ getAgentCredentials, getAgentVerifications })
+module.exports = Object.assign({ getUserCredentials, getUserVerifications })

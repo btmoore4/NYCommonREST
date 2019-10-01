@@ -7,7 +7,7 @@ async function getUserCredentials(res, user, password, key) {
         res.send("Undefined Username, Key, or Password for Agent Credentials")
     }
 
-    const url =  URL_PREFIX.concat(user, ":@", key, URL_SUFFIX)
+    const url = URL_PREFIX.concat(user, ":@", key, URL_SUFFIX)
     const agent = new Agent(url, user, password)
     const credentials = await agent.getCredentials()
 
@@ -27,7 +27,7 @@ async function getUserVerifications(res, user, password, key) {
         res.send("Undefined Username, Key, or Password for Agent Verifications")
     }
 
-    const url =  URL_PREFIX.concat(user, ":@", key, URL_SUFFIX)
+    const url = URL_PREFIX.concat(user, ":@", key, URL_SUFFIX)
     const agent = new Agent(url, user, password)
     const verifications = await agent.getVerifications()
 
@@ -43,4 +43,19 @@ async function getUserVerifications(res, user, password, key) {
     )
 }
 
-module.exports = Object.assign({ getUserCredentials, getUserVerifications })
+async function getProofSchema(res, user, password, key, proof_id) {
+    if (typeof user === 'undefined' || typeof password === 'undefined' || typeof key === 'undefined') {
+        res.send("Undefined Username, Key, or Password for Agent Verifications")
+    }
+
+    const url = URL_PREFIX.concat(user, ":@", key, URL_SUFFIX)
+    const agent = new Agent(url, user, password)
+    const proof = await agent.verifierGetProofSchema(proof_id)
+    res.json({
+        'name': proof['name'],
+        'id': proof['id'],
+        'attributes': proof['requested_attributes']
+    })
+}
+
+module.exports = Object.assign({ getUserCredentials, getUserVerifications, getProofSchema })

@@ -33,7 +33,7 @@ function getMockUserVerifications(res) {
             "id": "Verify Age:1.012",
             "version": "1.012",
             "attributes": {
-                "DOB": {
+                "dob_referent": {
                     "name": "DOB",
                     "restrictions": [
                         {
@@ -44,7 +44,7 @@ function getMockUserVerifications(res) {
                         },
                     ]
                 },
-                "First Name": {
+                "first_name_referent": {
                     "name": "First Name",
                     "restrictions": [
                         {
@@ -55,7 +55,7 @@ function getMockUserVerifications(res) {
                         }
                     ]
                 },
-                "Last Name": {
+                "last_name_referent": {
                     "name": "Last Name",
                     "restrictions": [
                         {
@@ -71,4 +71,48 @@ function getMockUserVerifications(res) {
       ]
     res.json(mock_verifications);
 }
-module.exports = Object.assign({ getMockUserCredentials, getMockUserVerifications })
+
+function getMockProofSchema(res) {
+    var mock_proof = {
+            "name": "Verify Age",
+            "id": "Verify Age:1.012",
+            "attributes": {
+                "dob_referent": {
+                    "name": "DOB",
+                    "restrictions": [
+                        {
+                            "cred_def_id": "V15FcuVb5wVaJuYgyQHjjn:3:CL:96:TAG1"
+                        },
+                        {
+                            "cred_def_id": "V15FcuVb5wVaJuYgyQHjjn:3:CL:96:TAG1"
+                        },
+                    ]
+                },
+                "first_name_referent": {
+                    "name": "First Name",
+                    "restrictions": [
+                        {
+                            "cred_def_id": "V15FcuVb5wVaJuYgyQHjjn:3:CL:96:TAG1"
+                        },
+                        {
+                            "cred_def_id": "V15FcuVb5wVaJuYgyQHjjn:3:CL:294:TAG1"
+                        }
+                    ]
+                },
+                "last_name_referent": {
+                    "name": "Last Name",
+                    "restrictions": [
+                        {
+                            "cred_def_id": "V15FcuVb5wVaJuYgyQHjjn:3:CL:96:TAG1"
+                        },
+                        {
+                            "cred_def_id": "V15FcuVb5wVaJuYgyQHjjn:3:CL:294:TAG1"
+                        }
+                    ]
+                },
+            }
+        }
+    res.json(mock_proof);
+}
+
+module.exports = Object.assign({ getMockUserCredentials, getMockUserVerifications, getMockProofSchema })

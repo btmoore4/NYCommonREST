@@ -30,6 +30,14 @@ app.get("/userVerifications", (req, res, next) => {
     SSI.getUserVerifications(res, agent_user, agent_password, agent_key)
 });
 
+app.get("/proofSchema", (req, res, next) => {
+    const agent_user = req.query.user
+    const agent_password = req.query.password
+    const agent_key = req.query.key
+    const agent_proof_id = req.query.proof
+    SSI.getProofSchema(res, agent_user, agent_password, agent_key, agent_proof_id)
+});
+
 /* MOCK Routes */
 var Mock = require('./api/mock_api.js')
 
@@ -39,4 +47,8 @@ app.get("/mockUserCredentials", (req, res, next) => {
 
 app.get("/mockUserVerifications", (req, res, next) => {
     Mock.getMockUserVerifications(res)
+});
+
+app.get("/mockProofSchema", (req, res, next) => {
+    Mock.getMockProofSchema(res)
 });

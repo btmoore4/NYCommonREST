@@ -115,4 +115,8 @@ function getMockProofSchema(res) {
     res.json(mock_proof);
 }
 
-module.exports = Object.assign({ getMockUserCredentials, getMockUserVerifications, getMockProofSchema })
+function verifyMockProofCredentials(res) {
+    res.json("Proof Verification Complete");
+}
+
+module.exports = Object.assign({ getMockUserCredentials, getMockUserVerifications, getMockProofSchema, verifyMockProofCredentials })

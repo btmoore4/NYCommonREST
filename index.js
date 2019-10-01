@@ -17,25 +17,36 @@ app.get("/", (req, res, next) => {
 var SSI = require('./api/ssi_api.js')
 
 app.get("/userCredentials", (req, res, next) => {
-    const agent_user = req.query.user
+    const agent_name = req.query.name
     const agent_password = req.query.password
     const agent_key = req.query.key
-    SSI.getUserCredentials(res, agent_user, agent_password, agent_key)
+    SSI.getUserCredentials(res, agent_name, agent_password, agent_key)
 });
 
 app.get("/userVerifications", (req, res, next) => {
-    const agent_user = req.query.user
+    const agent_name = req.query.name
     const agent_password = req.query.password
     const agent_key = req.query.key
-    SSI.getUserVerifications(res, agent_user, agent_password, agent_key)
+    SSI.getUserVerifications(res, agent_name, agent_password, agent_key)
 });
 
 app.get("/proofSchema", (req, res, next) => {
-    const agent_user = req.query.user
+    const agent_name = req.query.name
     const agent_password = req.query.password
     const agent_key = req.query.key
     const agent_proof_id = req.query.proof
-    SSI.getProofSchema(res, agent_user, agent_password, agent_key, agent_proof_id)
+    SSI.getProofSchema(res, agent_name, agent_password, agent_key, agent_proof_id)
+});
+
+app.get("/verifyProof", (req, res, next) => {
+    const proof_name = req.query.proof_name
+    const proof_password = req.query.proof_password
+    const proof_key = req.query.proof_key
+    const user_name = req.query.user_name
+    const user_password = req.query.user_password
+    const user_key = req.query.user_key
+    const proof_id = req.query.proof
+    SSI.verifyProof(res, proof_name, proof_password, proof_key, user_name, user_password, user_key, proof_id)
 });
 
 /* MOCK Routes */
@@ -51,4 +62,8 @@ app.get("/mockUserVerifications", (req, res, next) => {
 
 app.get("/mockProofSchema", (req, res, next) => {
     Mock.getMockProofSchema(res)
+});
+
+app.get("/mockVerifyProof", (req, res, next) => {
+    Mock.verifyMockProofCredentials(res)
 });

@@ -1,5 +1,7 @@
 # NYCommonREST
 
+![NYCommon Picture](https://raw.githubusercontent.com/btmoore4/NYCommonREST/master/utils/nycommon.png)
+
 ## Project Overview
 
 NYCommon was a finalist submission to the [NYC Big Apps Blockchain 2019 competition](https://medium.com/@nycbigapps/announcing-the-2019-nyc-bigapps-blockchain-cohort-1b465268129f). 

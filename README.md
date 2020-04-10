@@ -1,4 +1,4 @@
-# NYCommonREST
+# NYCommon REST Service
 
 ![NYCommon Picture](https://raw.githubusercontent.com/btmoore4/NYCommonREST/master/utils/nycommon.png)
 
